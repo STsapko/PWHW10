@@ -1,0 +1,10 @@
+{% extends 'quotes/base.html' %}
+
+{% block content %}
+    <h3>Add Author</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add</button>
+    </form>
+{% endblock %}

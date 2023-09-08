@@ -1,0 +1,38 @@
+{% extends 'quotes/base.html' %}
+
+{% block content %}
+
+<div class="author-container">
+    <div class="author-details">
+        <h1 class="authorName">
+            <span itemprop="name">{{ author_info.fullname }}</span>
+        </h1>
+        <div class="data-row">
+            <div class="dataTitle">Born:</div>
+            <div class="dataItem">{{ author_info.born_loc }}</div>
+        </div>
+        <div class="data-row">
+            <div class="dataTitle">Born date:</div>
+            <div class="dataItem">{{ author_info.born_date }}</div>
+        </div>
+        <div class="data-row">
+            <div class="dataTitle">Description:</div>
+            <div class="dataItem">{{ author_info.desc }}</div>
+        </div>
+    </div>
+
+    <div class="quote-container">
+        <h3>Quotes by {{ author_info.fullname }}</h3>
+        <div class="row">
+            <div class="col-md-8">
+                {% for quote in quotes %}
+                <div class="quote" itemscope="" itemtype="http://schema.org/CreativeWork">
+                    <span class="text" itemprop="text">{{ quote.quote }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

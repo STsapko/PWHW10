@@ -1,0 +1,25 @@
+{% extends 'quotes/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        {% if user.is_authenticated %}
+        <a href="{% url 'quotes:add_author' %}" class="btn btn-primary mb-3 md-5">Add Author</a>
+
+        <a href="{% url 'quotes:add_quote' %}" class="btn btn-primary mb-3 md-5">Add Qoute</a>
+        {% endif %}
+
+        {% for quote in quotes %}
+        <div class="quote" itemscope="" itemtype="http://schema.org/CreativeWork">
+            <span class="text" itemprop="text">{{ quote.quote }}</span>
+            <div class="author-info">
+                <a href="{% url 'quotes:author_info' quote.author.fullname %}">
+                    <span class="author-name">{{ quote.author.fullname }}</span>
+                </a>
+            </div>
+        {% endfor %}        
+    </div>
+
+
+</div>
+{% endblock %}
